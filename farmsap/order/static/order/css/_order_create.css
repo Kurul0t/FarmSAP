@@ -1,0 +1,27 @@
+/* Red placeholder and visible border/shadow for required empty fields */
+.required-empty::placeholder { color: #d9534f; opacity: 1; }
+.required-empty {
+    border-color: #d9534f !important;
+    box-shadow: 0 0 0 3px rgba(217,83,79,0.08);
+    outline: none;
+}
+.required-empty:focus {
+    box-shadow: 0 0 0 4px rgba(217,83,79,0.12);
+}
+/* Ensure selects, inputs and textareas show the indicator */
+select.required-empty, input.required-empty, textarea.required-empty {
+    border-color: #d9534f !important;
+    box-shadow: 0 0 0 3px rgba(217,83,79,0.08);
+}
+
+#orderSubmitBtn {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#orderSubmitBtn.active {
+    opacity: 1;
+    cursor: pointer;
+}
+
+

@@ -1,0 +1,18 @@
+<!-- templates/main/infopage.html -->
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Замовлення{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/infopage.css' %}">
+{% endblock %}
+
+{% block content %}
+<body>
+
+<div class="box">
+    <h1>{{ company.name }}</h1>
+</div>
+
+</body>
+{% endblock %}

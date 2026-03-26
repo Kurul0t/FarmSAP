@@ -1,0 +1,13 @@
+.orders-info-box {
+    margin: 12px 0 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #f4f6f8;
+    border: 1px solid #d9e0e7;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.orders-info-box.hidden {
+    display: none;
+}

@@ -1,0 +1,77 @@
+<!-- order.html* -->
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Замовлення{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'order/css/orders.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page">
+    <div class="topbar">
+
+        <div class="title">Замовлення</div>
+
+        <div class="status-filter">
+
+            <button class="status-btn active" data-status="all">
+                <span>Усі</span>
+                <span class="status-dot"></span>
+            </button>
+            {% for value,label in statuses %}
+                <button class="status-btn" data-status="{{ value }}">
+                    <span>{{ label }}</span>
+                    <span class="status-dot"></span>
+                </button>
+            {% endfor %}
+   
+
+
+        </div>
+
+        <div class="view-switch">
+            <button class="switch-btn active" id="listBtn" type="button">Список</button>
+            <button class="switch-btn" id="gridBtn" type="button">Блоки</button>
+        </div>
+
+    </div>
+    <div id="ordersInfoBox" class="orders-info-box hidden"></div>
+
+    <div class="orders-container list-view" id="ordersContainer">
+        {% for order in orders%}
+            <div
+                class="order-card order-card-{{ order.status }}  {% if not order.is_seen %}order-unseen{% endif %}"
+                data-id="{{ order.id }}"
+                data-receipt="Замовлення №{{ order.receipt_number }}"
+                data-created="{{ order.created_at|date:'d.m.Y H:i' }}"
+                data-total="{{ order.total }}"
+                data-status="{{ order.status }}"
+                data-status-label="{{ order.get_status_display }}"
+                data-items='{{ order.items|safe }}'
+            >
+                <div class="order-left">
+                    <div class="order-number">№{{ order.receipt_number }}</div>
+                    <div class="order-date">
+                        Створено: {{ order.created_at|date:"d.m.Y" }}<br>
+                        {{ order.created_at|date:"H:i" }}
+                    </div>
+                    <div class="order-items">
+                        Позицій:
+                    </div> 
+                </div>
+
+                <div class="order-right">
+                     <div class="order-total">{{ order.total }} грн</div>
+                    <span class="status">{{ order.get_status_display }}</span>
+                </div>
+            </div>
+        {%endfor%}
+        
+        <div class=" order-add" id="fabBtn">+</div>
+    </div>
+</div>
+
+{% include 'order/_order_create_modal.html' %}
+{% endblock %}
+

@@ -1,0 +1,32 @@
+<!-- templates/main/start_page.html -->
+{%load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Вибір компанії</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'main/css/start_page.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Farm SAP</h1>
+    <p>Оберіть компанію для роботи</p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <select name="company_id" required>
+            <option value="">-- Оберіть компанію --</option>
+            {% for company in companies %}
+                <option value="{{ company.id }}">{{ company.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Увійти</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!-- Модальне вікно створення -->
+<div class="modal-overlay" id="createModalOverlay">
+    <div class="order-modal modal-create-order">
+        <div class="modal-header">
+            <div class="modal-title" id="orderModalTitle">Нове замовлення</div>
+            <button class="modal-close" type="button" id="closeCreateModal">×</button>
+
+        </div>
+        <div class="modal-body">
+            <form method="post" id="orderForm"  class="create-order-form">
+                {% csrf_token %}
+                <input type="hidden" name="items_json" id="itemsJson">
+
+                <div class="create-order-layout">
+                    <div class="create-order-left">
+                        <div class="create-order-panel">
+                            <div class="create-order-add-row">
+                                <div class="field">
+                                    <label for="productSelect">Товар</label>
+                                    <select id="productSelect">
+                                        <option value="">Оберіть товар</option>
+                                        {% for product in products %}
+                                            <option
+                                                value="{{ product.id }}"
+                                                data-name="{{ product.name }}"
+                                                data-price="{{ product.price }}"
+                                                data-unit="{{ product.unit }}"
+                                            >
+                                                {{ product.name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="field small">
+                                    <label for="priceInput">Ціна</label>
+                                    <input type="number" id="priceInput" readonly>
+                                </div>
+
+                                <div class="field small">
+                                    <label for="qtyInput">К-ть</label>
+                                    <input type="number" id="qtyInput" min="1" step="1" value="1">
+                                </div>
+
+                                <div class="field add-btn-wrap">
+                                    <button type="button" id="addItemBtn" class="btn btn-primary">Додати</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="create-order-panel create-order-panel-grow">
+                            <div class="create-order-table-wrap">
+                                <table class="create-order-table" id="itemsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Товар</th>
+                                            <th>Ціна</th>
+                                            <th>К-ть</th>
+                                            <th>Сума</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+
+                            <div class="create-order-summary">
+                                <span>Позицій: <span id="itemsCount">0</span></span>
+                                <strong>Разом: <span id="totalValue">0.00</span> грн</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="create-order-right">
+                        <div class="receipt-preview">
+                            <div class="receipt-top">
+                                <div class="receipt-brand">
+                                    <strong>Інформація про клієнта</strong>
+                                </div>
+
+                                <div class="client-form-block">
+                                    <div class="field">
+                                        <label for="customerName">ПІБ</label>
+                                        <input type="text" id="customerName" name="customer_name" autocomplete="off">
+                                        <input type="hidden" id="customerId" name="customer_id">
+                                        <div id="customerSuggestions" class="suggestions-box"></div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="customerPhone">Номер телефону</label>
+                                        <input type="text" id="customerPhone" name="customer_phone">
+                                    </div>
+
+                                    
+                                </div>
+                                
+                                <div class="receipt-brand">
+                                    <strong><br>Доставка</strong>
+                                </div>
+                                <div class="client-form-block">
+                                    <div class="field">
+                                        <label for="paymentMethod">Спосіб оплати</label>
+                                        <select id="paymentMethod" name="payment_method">
+                                            <option value="">Оберіть спосіб оплати</option>
+                                            <option value="card">Карта</option>
+                                            <option value="cash">Готівка</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <label for="deliveryMethod">Спосіб доставки</label>
+                                        <select id="deliveryMethod" name="delivery_method">
+                                            <option value="">Оберіть спосіб доставки</option>
+                                            <option value="pickup">Самовивіз</option>
+                                            <option value="post">Пошта</option>
+                                            <option value="courier">Кур'єрська</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="field" id="postServiceWrap" style="display: none;">
+                                        <label for="postService">Служба доставки</label>
+                                        <select id="postService" name="post_service">
+                                            <option value="">Оберіть службу доставки</option>
+                                            <option value="nova_poshta">Нова пошта</option>
+                                            <option value="ukrposhta">Укрпошта</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="field" id="deliveryAddressWrap" style="display: none;">
+                                        <label for="deliveryAddress">Адреса доставки</label>
+                                        <input type="text" id="deliveryAddress" name="delivery_address">
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-actions modal-actions-bottom">
+                    <button type="submit" class="btn btn-primary" id="orderSubmitBtn" disabled>Створити</button>
+                </div>
+            </form>
+        </div>
+            
+    </div>
+</div>
+
+
+
+
