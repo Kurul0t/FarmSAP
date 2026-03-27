@@ -47,7 +47,7 @@
       </a>
       <nav class="main-nav">
 
-        <a href="#" class="nav-card {% if request.path == '/orders/' %}active{% endif %}">
+        <a href="#" class="nav-card {% if request.path == '/#/' %}active{% endif %}">
             <i class="bi bi-people"></i>
             <div class="nav-text">
                 <span class="nav-title">Клієнти</span>
@@ -55,7 +55,7 @@
             </div>
         </a>
 
-        <a href="{% url 'transactions' %}" class="nav-card {% if request.path == '/orders/' %}active{% endif %}">
+        <a href="{% url 'transactions' %}" class="nav-card {% if request.path == '/transactions/' %}active{% endif %}">
             <i class="bi bi-cash-stack"></i>
             <div class="nav-text">
                 <span class="nav-title">Транзакції</span>
@@ -71,7 +71,7 @@
             </div>
         </a>
 
-        <a href="#" class="nav-card {% if request.path == '/orders/' %}active{% endif %}">
+        <a href="#" class="nav-card {% if request.path == '/#/' %}active{% endif %}">
             <i class="bi bi-building"></i>
             <div class="nav-text">
                 <span class="nav-title">Склад</span>
@@ -79,7 +79,7 @@
             </div>
         </a>
 
-        <a href="#" class="nav-card {% if request.path == '/orders/' %}active{% endif %}">
+        <a href="#" class="nav-card {% if request.path == '/#/' %}active{% endif %}">
             <i class="bi bi-graph-up"></i>
             <div class="nav-text">
                 <span class="nav-title">Фінанси</span>
@@ -94,7 +94,7 @@
         <div class="user-box">
           <div class="company-block">
               <div class="company-name">{{ company.name }}</div>
-              <div class="company-currency">₴{{ finance_total }}</div>
+              <div class="company-currency">{{ finance_total }} грн</div>
           </div>
 
           <a href="#" class="user-icon">
