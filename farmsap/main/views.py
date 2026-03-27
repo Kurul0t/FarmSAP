@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Company
+from order.models import Order
 from main.dacorators import require_active_company
 
 def start_page(request):
@@ -13,5 +14,11 @@ def start_page(request):
 
 @require_active_company
 def infopage(request):
-    return render(request, "main/infopage.html")
+    order = Order.objects.filter(
+        company_id=request.session["active_company_id"]
+        )
+    return render(request, "main/infopage.html",{
+        "orders_count": order.count(),
+        "orders":order.order_by("created_at")
+    })
 

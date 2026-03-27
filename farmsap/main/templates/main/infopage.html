@@ -1,18 +1,124 @@
-<!-- templates/main/infopage.html -->
 {% extends "main/base.html" %}
 {% load static %}
-{% block title %}Замовлення{% endblock %}
+{% block title %}Головна{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'main/css/infopage.css' %}">
 {% endblock %}
 
 {% block content %}
-<body>
+<main class="page-shell">
+<div class="dashboard-page">
 
-<div class="box">
-    <h1>{{ company.name }}</h1>
+    <section class="kpi-row">
+        <div class="kpi-card">
+            <div class="kpi-card__title">Дохід</div>
+            <div class="kpi-card__value">{{ finance_total }} грн</div>
+            <div class="kpi-card__meta positive">+12% за день</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-card__title">Замовлення</div>
+            <div class="kpi-card__value">{{ orders_count }}</div>
+            <div class="kpi-card__meta">7 нових</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-card__title">Клієнти</div>
+            <div class="kpi-card__value">214</div>
+            <div class="kpi-card__meta">18 активних сьогодні</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-card__title">Проблеми</div>
+            <div class="kpi-card__value">5</div>
+            <div class="kpi-card__meta negative">потребують уваги</div>
+        </div>
+    </section>
+
+    <section class="dashboard-layout">
+
+        <div class="panel panel-finance">
+            <div class="panel-head">
+                <div>
+                    <div class="panel-title">Фінансовий стан</div>
+                    <div class="panel-subtitle">поточний зріз</div>
+                </div>
+            </div>
+            <div class="panel-placeholder">Блок фінансового стану</div>
+        </div>
+
+        <div class="panel panel-modules">
+            <div class="panel-head">
+                <div>
+                    <div class="panel-title">Модулі</div>
+                    <div class="panel-subtitle">навігація</div>
+                </div>
+            </div>
+            <div class="panel-placeholder">Блок модулів</div>
+        </div>
+
+        <div class="panel panel-small-1">
+            <div class="panel-head">
+                <div>
+                    <div class="panel-title">Малий блок 1</div>
+                    <div class="panel-subtitle">верхній лівий</div>
+                </div>
+            </div>
+            <div class="panel-placeholder">Лівий верхній 1</div>
+        </div>
+
+        <div class="panel panel-right-top">
+            <div class="panel-head">
+                <div>
+                    <div class="panel-title">Правий верхній блок</div>
+                    <div class="panel-subtitle">великий блок справа</div>
+                </div>
+            </div>
+            <div class="panel-placeholder">Правий верхній великий блок</div>
+        </div>
+
+        <div class="panel panel-orders">
+            <div class="panel-head">
+                <div>
+                    <div class="panel-title">Останні замовлення</div>
+                    <div class="panel-subtitle">оперативний контроль</div>
+                </div>
+            </div>
+            <div class="panel-placeholder">Блок останніх замовлень</div>
+        </div>
+
+        <div class="panel panel-small-2">
+            <div class="panel-head">
+                <div>
+                    <div class="panel-title">Малий блок 2</div>
+                    <div class="panel-subtitle">нижній лівий</div>
+                </div>
+            </div>
+            <div class="panel-placeholder">Лівий верхній 2</div>
+        </div>
+
+
+        <div class="panel panel-right-bottom">
+            <div class="panel-head">
+                <div>
+                    <div class="panel-title">Нижній правий блок</div>
+                    <div class="panel-subtitle">окремий нижній блок</div>
+                </div>
+            </div>
+            <div class="panel-placeholder">Правий нижній блок</div>
+        </div>
+                <div class="panel panel-events">
+            <div class="panel-head">
+                <div>
+                    <div class="panel-title">Події</div>
+                    <div class="panel-subtitle">останні зміни</div>
+                </div>
+            </div>
+            <div class="panel-placeholder">Блок подій</div>
+        </div>
+
+    </section>
 </div>
-
-</body>
+</main>
 {% endblock %}

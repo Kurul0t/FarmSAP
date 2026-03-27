@@ -1,62 +1,135 @@
+/* HEADER */
+.header-bar {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 20px;
+
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+/* NAV CONTAINER */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+.page-shell {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* CARD */
+.nav-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    background: #f8fafc;
+    border: 1px solid transparent;
+
+    text-decoration: none;
+    color: #1f2937;
+
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+/* ICON */
+.nav-card i {
+    font-size: 18px;
+    color: #6b7280;
+    transition: 0.2s;
+}
+
+/* TEXT */
+.nav-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.nav-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-desc {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+/* HOVER */
+.nav-card:hover {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.nav-card:hover i {
+    color: #3b82f6;
+}
+
+/* ACTIVE */
+.nav-card.active {
+    background: #eff6ff;
+    border: 1px solid #3b82f6;
+    box-shadow: 0 6px 16px rgba(59,130,246,0.15);
+}
+
+.nav-card.active i {
+    color: #2563eb;
+}
+
+/* USER BLOCK */
 .user-box {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 
-    margin-left: auto; /* 🔥 головне */
-    
-    padding: 6px 12px;
-    border-radius: 10px;
+    padding: 6px 10px;
+    border-radius: 12px;
 
-    transition: background 0.2s ease;
+    transition: 0.2s;
 }
 
-
-.company-block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* 🔥 текст теж вправо */
+.user-box:hover {
+    background: #f3f4f6;
 }
 
 .company-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-
-    max-width: 160px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    text-align: right;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .company-currency {
     font-size: 12px;
-    font-weight: 600;
-    color: #333;
-
-    text-align: right;
+    color: #6b7280;
 }
 
 .user-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #f3f4f6;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 36px;
-    height: 36px;
-
-    border-radius: 50%;
-    background: #f1f1f1;
-
-    color: #333;
-    font-size: 20px;
-
-    transition: all 0.2s ease;
+    transition: 0.2s;
 }
 
 .user-icon:hover {
-    background: #333;
+    background: #3b82f6;
     color: #fff;
 }
